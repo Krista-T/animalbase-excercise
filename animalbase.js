@@ -26,6 +26,17 @@ function start() {
     .querySelector("[data-filter='*']")
     .addEventListener("click", filterAll);
 
+  //sorting
+  document
+    .querySelector("[data-filter='descending']")
+    .addEventListener("click", sortDesc);
+  document
+    .querySelector("[data-filter='ascending']")
+    .addEventListener("click", sortAsc);
+  document
+    .querySelector("[data-filter='age']")
+    .addEventListener("click", sortAge);
+
   loadJSON();
 }
 
@@ -91,8 +102,40 @@ function onlyDogs(animal) {
   return dogResult;
 }
 
-//Can I call again same show all function?
 function filterAll() {
+  displayList(allAnimals);
+}
+
+//sorting
+
+function sortDesc() {
+  console.log(allAnimals);
+  const descending = allAnimals.sort(function (a, b) {
+    if (a.name < b.name) {
+      return -1;
+    } else {
+      return 1;
+    }
+  });
+
+  displayList(allAnimals);
+  // function sort(a,b)
+  //
+}
+
+function sortAsc() {
+  const ascending = console.log(allAnimals);
+  allAnimals.sort(function (a, b) {
+    return b.name - a.name;
+  });
+  displayList(allAnimals);
+}
+
+function sortAge() {
+  const oldest = console.log(allAnimals);
+  allAnimals.sort(function (a, b) {
+    return b.age - a.age;
+  });
   displayList(allAnimals);
 }
 
